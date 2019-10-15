@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GitApi</string>
+    <string name="username">username</string>
+    <string name="log_in">Log In</string>
+    <string name="avatar">Avatar</string>
+    <string name="repositories">repositories</string>
+</resources>

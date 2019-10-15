@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.gitapi">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.MainCallBack.MainCallBack">
+        </activity>
+        <activity android:name=".activity.Repositories.Repositiories">
+        </activity>
+        <activity android:name=".activity.Main3Activity">
+        </activity>
+        <activity android:name=".activity.Main2Activity">
+        </activity>
+        <activity android:name=".activity.UserActivity.UserActivity">
+        </activity>
+        <activity android:name=".activity.MainActivity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter android:scheme="http">
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                        android:host="callback"
+                        android:scheme="kioigitapi.herokuapp.com/callback"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
