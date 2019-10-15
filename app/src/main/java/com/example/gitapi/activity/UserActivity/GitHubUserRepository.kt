@@ -20,6 +20,7 @@ class GitHubUserRepository() {
     private var clientId: String = ""
     private var clientSecret: String = ""
     private var code: String = ""
+    private lateinit var mGetGithubUserData: MutableLiveData<ArrayList<GitHubUser>>
 
 
     constructor(
@@ -55,12 +56,10 @@ class GitHubUserRepository() {
 
     val nice: MutableLiveData<ArrayList<GitHubUser>>
         get() {
+            mGetGithubUserData = MutableLiveData()
             approval()
             setNames()
-            val data = MutableLiveData<ArrayList<GitHubUser>>()
-
-            data.value = dataset
-            return data
+            return mGetGithubUserData
         }
 
     fun approval() {
@@ -94,7 +93,7 @@ class GitHubUserRepository() {
                     response.body()?.avatar.toString()
                 )
                 deliveryItemList.addAll(listOf(gitHubUser))
-                nice.postValue(deliveryItemList)
+                mGetGithubUserData.postValue(deliveryItemList)
             }
 
             override fun onFailure(call: Call<GitHubUser>, t: Throwable) {

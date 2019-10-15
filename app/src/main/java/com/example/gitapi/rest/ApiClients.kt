@@ -9,6 +9,7 @@ object ApiClients {
     private var retrofit: Retrofit? = null
 
 
+
     // for static you use a variable
     val client: Retrofit?
         get() {

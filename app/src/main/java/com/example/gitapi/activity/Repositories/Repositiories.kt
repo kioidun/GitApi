@@ -52,7 +52,7 @@ class Repositiories : AppCompatActivity() {
         val call = apiService.getUser(receivedUserName)
         call.enqueue(object : Callback<List<GitHubRepo>> {
             override fun onResponse(call: Call<List<GitHubRepo>>, response: Response<List<GitHubRepo>>) {
-                response.body()
+
                  myDataSource.clear()
                  myDataSource.addAll(response.body()!!)
                  myAdapter!!.notifyDataSetChanged()

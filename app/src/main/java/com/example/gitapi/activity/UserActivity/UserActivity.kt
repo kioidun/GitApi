@@ -74,6 +74,7 @@ class UserActivity : AppCompatActivity() {
             deliveryList?.get(2)
             if (userList == null) {
                 muserName.text = " No name provided"
+                return@Observer
             } else {
                 muserName.text = "Username:" + userList[0].name
             }
