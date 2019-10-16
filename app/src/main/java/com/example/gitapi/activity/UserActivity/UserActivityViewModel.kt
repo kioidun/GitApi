@@ -42,7 +42,7 @@ class UserActivityViewModel() : ViewModel() {
 
     val allDeliveryItems: LiveData<ArrayList<GitHubUser>>
         get() {
-            allmitable = MutableLiveData()
+           // allmitable = MutableLiveData()
             //         setNames()
             return allmitable!!
 

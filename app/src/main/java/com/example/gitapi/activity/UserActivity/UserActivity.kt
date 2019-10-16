@@ -72,7 +72,7 @@ class UserActivity : AppCompatActivity() {
 
             deliveryList?.get(1)
             deliveryList?.get(2)
-            if (userList[0].name == null) {
+            if (userList == null) {
                 muserName.text = " No name provided"
             } else {
                 muserName.text = "Username:" + userList[0].name
@@ -81,7 +81,7 @@ class UserActivity : AppCompatActivity() {
             mfollowers.text = "Followers:" + userList[0].followers
             mfollowing.text = "Following:" + userList[0].following
 
-            if (userList[0].email == null) {
+            if (userList == null) {
                 memail.text = "No email provided"
             } else {
                 memail.text = "email:" + userList[0].email
