@@ -20,7 +20,7 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.gitapi.activity.Repositories.Repositiories
+import com.example.gitapi.activity.Repositories.UsersRepositories
 import com.example.gitapi.model.AcessToken
 import com.example.gitapi.rest.GitApiClient
 
@@ -124,7 +124,7 @@ class UserActivity : AppCompatActivity() {
     }
 
     fun loadOwnRepos() {
-        var i = Intent(this@UserActivity, Repositiories::class.java)
+        var i = Intent(this@UserActivity, UsersRepositories::class.java)
         i.putExtra("username", newString)
         startActivity(i)
     }

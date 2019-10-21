@@ -7,7 +7,7 @@
         android:orientation="vertical"
         android:layout_height="match_parent"
         android:background="#9e9e9e"
-        tools:context=".activity.Repositories.Repositiories">
+        tools:context=".activity.Repositories.UsersRepositories">
 
     <TextView
             android:id="@+id/userNameTV"

@@ -6,6 +6,9 @@ import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gitapi.model.GitHubRepo
 import android.widget.TextView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gitapi.R
 import com.example.gitapi.activity.Adapters.ReposAdapter
@@ -15,13 +18,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Repositiories : AppCompatActivity() {
+class UsersRepositories : AppCompatActivity() {
 
     lateinit var receivedUserName: String
     lateinit var userNameTV: TextView
     lateinit var mRecyclerView: RecyclerView
     var myDataSource: MutableList<GitHubRepo> = ArrayList()
     internal var myAdapter: RecyclerView.Adapter<*>? = null
+    private lateinit var mgetRepoViewModel: UsersRepositoryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -43,25 +47,17 @@ class Repositiories : AppCompatActivity() {
             getApplicationContext()
         )
         mRecyclerView.adapter = myAdapter
-
-        loadRepositories()
-    }
-
-    private fun loadRepositories() {
-        val apiService = ApiClients.client!!.create(GitHubRepoEndPoint::class.java)
-        val call = apiService.getUser(receivedUserName)
-        call.enqueue(object : Callback<List<GitHubRepo>> {
-            override fun onResponse(call: Call<List<GitHubRepo>>, response: Response<List<GitHubRepo>>) {
-                response.body()
-                 myDataSource.clear()
-                 myDataSource.addAll(response.body()!!)
-                 myAdapter!!.notifyDataSetChanged()
-            }
-
-            override fun onFailure(call: Call<List<GitHubRepo>>, t: Throwable) {
-                Log.e("Repos", t.toString());
-            }
+        mgetRepoViewModel = ViewModelProviders.of(this, UsersRepositoryFactory(application, receivedUserName))
+            .get(UsersRepositoryViewModel::class.java)
+        mgetRepoViewModel.init()
+        mgetRepoViewModel.allRepositories?.observe(this, Observer { repos ->
+            myDataSource.clear()
+            myDataSource.addAll(repos)
+            myAdapter!!.notifyDataSetChanged()
+            //repos
         })
+
+
     }
 }
 
