@@ -15,7 +15,7 @@
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".activity.MainCallBack.MainCallBack">
         </activity>
-        <activity android:name=".activity.Repositories.Repositiories">
+        <activity android:name=".activity.Repositories.UsersRepositories">
         </activity>
         <activity android:name=".activity.Main3Activity">
         </activity>
